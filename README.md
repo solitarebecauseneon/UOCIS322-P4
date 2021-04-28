@@ -59,15 +59,15 @@ As always you'll turn in your `credentials.ini` using Canvas, which will point t
 
 * If your code works as expected: 100 points. This includes:
 
-	* Complete the frontend in `calc.html`.
+	* Completing the frontend in `calc.html`.
 	
-	* Complete the Flask app accordingly (`flask_brevets.py`).
+	* Completing the Flask app accordingly (`flask_brevets.py`).
 	
-	* Implement the logic in `acp_times.py`.
+	* Implementing the logic in `acp_times.py`.
 	
-	* `README` is updated with a clear specification.
+	* Updating `README` with a clear specification.
 	
-	* You write at least five correct tests using nose (put them in `tests`, follow Project 3 if necessary) and all pass.
+	* Writing at least five correct tests using nose (put them in `tests`, follow Project 3 if necessary) and all pass.
 
 * If the logic in `acp_times.py` is wrong or is missing, up to 30 points will be docked off.
 
