@@ -3,7 +3,7 @@ Brevet time calculator.
 
 ## Overview
 
-Reimplement the RUSA ACP controle time calculator with flask and ajax.
+Reimplement the RUSA ACP controle time calculator with Flask and AJAX.
 
 ### ACP controle times
 
