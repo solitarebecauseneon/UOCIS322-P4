@@ -92,7 +92,7 @@
                            min="0" max="900" /></td>
                         <!-- Dist (km) -->
                         <td><input name="km" type="number" step="0.00001"
-                           min="0" max="1100" /> </td>
+                           min="0" max="1200" /> </td>
                         <!-- Location (optional) -->
                         <td><input name="location" type="text"
                            placeholder="Optional location name"
@@ -121,6 +121,8 @@
             // View flask_brevets.py for details.
             function calc_times(control) {
               var km = control.find("input[name='km']").val();
+              var distance = control.find("select[name='distance']").val();
+              var datetime = control.find("input[name='begin_date']").val();
               var open_time_field = control.find("input[name='open']");
               var close_time_field = control.find("input[name='close']");
 
