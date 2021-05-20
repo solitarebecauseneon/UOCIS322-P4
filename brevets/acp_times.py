@@ -60,7 +60,7 @@ def open_time(control_dist_km, brevet_dist_km, brevet_start_time):
     hr = m_shift % 60
     mns = m_shift - hr
     # arrow object shifted by hr, mns
-    opentime = brevet_start_time.shift(hour=+hr, minute=+mns)
+    opentime = brevet_start_time.shift(hours=+hr, minutes=+mns)
 
     return opentime
 
@@ -94,6 +94,6 @@ def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
     # arrow object shifted by hr, mns
     hr = m_shift % 60
     mns = m_shift - hr
-    closetime = brevet_start_time.shift(hour=+hr, minute=+mns)
+    closetime = brevet_start_time.shift(hours=+hr, minutes=+mns)
 
     return closetime
