@@ -19,7 +19,7 @@ def a_same(s, t):
     return s.format('YYYY-MM-DD HH:mm:ss') == t.format('YYYY-MM-DD HH:mm:ss')
 
 
-def low_1():
+def test_low_1():
     """
     Tests 0km control distances
     """
@@ -27,7 +27,7 @@ def low_1():
     assert a_same(close_time(0, 200, d_arrow), arrow.get('2000-01-01 01:00:00', 'YYYY-MM-DD HH:mm:ss'))
 
 
-def low_2():
+def test_low_2():
     """
     Tests <= 60km values (special cases) for
     control distances in both. Should create
@@ -43,7 +43,7 @@ def low_2():
     assert a_same(close_time(61, 1000, d_arrow), arrow.get('2000-01-01 04:04:00', 'YYYY-MM-DD HH:mm:ss'))
 
 
-def high_1():
+def test_high_1():
     """
     Tests non-overkill values (where control distance = brevet distance)
     """
@@ -54,7 +54,7 @@ def high_1():
     assert a_same(close_time(600, 600, d_arrow), arrow.get('2000-01-02 16:00:00', 'YYYY-MM-DD HH:mm:ss'))
 
 
-def high_2():
+def test_high_2():
     """
     Tests overkill values (control values that exceed
     the brevet distance by 20% or less)
@@ -66,7 +66,7 @@ def high_2():
     assert a_same(close_time(720, 600, d_arrow), arrow.get('2000-01-02 16:00:00', 'YYYY-MM-DD HH:mm:ss'))
 
 
-def random():
+def test_random():
     """
     Tests a small variety of non-special values
     """
