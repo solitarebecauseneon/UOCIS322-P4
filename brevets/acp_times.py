@@ -57,8 +57,8 @@ def open_time(control_dist_km, brevet_dist_km, brevet_start_time):
     m_shift += _minute_calc(cd, MAX_SPEEDS[count])  # Will be 0 if cd does not matter, < 200 otherwise
     for i in range(count):  # Calculates 'maxed' control distances
         m_shift += _minute_calc(200, MAX_SPEEDS[count])
-    hr = m_shift % 60
-    mns = m_shift - hr
+    hr = m_shift // 60
+    mns = m_shift - (hr * 60)
     # arrow object shifted by hr, mns
     opentime = brevet_start_time.shift(hours=+hr, minutes=+mns)
 
@@ -92,8 +92,8 @@ def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
     for i in range(count):  # Calculates all distance in a given range of speed
         m_shift += _minute_calc(200, MIN_SPEEDS[i])
     # arrow object shifted by hr, mns
-    hr = m_shift % 60
-    mns = m_shift - hr
+    hr = m_shift // 60
+    mns = m_shift - (hr * 60)
     closetime = brevet_start_time.shift(hours=+hr, minutes=+mns)
 
     return closetime
