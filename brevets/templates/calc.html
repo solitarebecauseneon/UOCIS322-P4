@@ -115,12 +115,9 @@
             var SCRIPT_ROOT = {{ request.script_root|tojson|safe }} ;
             var TIME_CALC_URL = SCRIPT_ROOT + "/_calc_times";
 
-            // FIX ME!
-            // Right now, only the kilometers are passed
-            // you need to pass much more!
-            // View flask_brevets.py for details.
             function calc_times(control) {
               var km = control.find("input[name='km']").val();
+              console.log(control);
               var distance = control.find("select[id='brevet_dist_km']").val();
               console.log(distance);
               var datetime = control.find("input[id='begin_date']").val();
