@@ -117,6 +117,8 @@
 
             function calc_times(control) {
               var km = control.find("input[name='km']").val();
+              var open_time_field = control.find("input[name='open']");
+              var close_time_field = control.find("input[name='close']");
               var distance = document.getElementById('brevet_dist_km').value;
               console.log(distance);
               var begin_date = document.getElementById('begin_date').value;
