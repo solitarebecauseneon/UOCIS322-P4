@@ -57,10 +57,6 @@ def _calc_times():
     app.logger.debug("distance={}".format(brev_distance))
     app.logger.debug("begin date={}".format(begin_date))
     app.logger.debug("request.args: {}".format(request.args))
-    # FIXME!
-    # Right now, only the current time is passed as the start time
-    # and control distance is fixed to 200
-    # You should get these from the webpage!
     open_time = acp_times.open_time(km, brev_distance, arrow.get(begin_date)).format('YYYY-MM-DDTHH:mm')
     close_time = acp_times.close_time(km, brev_distance, arrow.get(begin_date)).format('YYYY-MM-DDTHH:mm')
     result = {"open": open_time, "close": close_time}
