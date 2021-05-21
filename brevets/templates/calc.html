@@ -24,7 +24,7 @@
          crossorigin="anonymous"></script>
       <!-- moment.js is the JavaScript equivalent of arrow.py -->
       <script>
-      src="{{ url_for('static', filename="js/moment.min.js") }}"></script>
+      src="{{ url_for('static', filename="js/moment.min.js") }}"</script>
    </head>
    <!-- Our own stylesheet -->
    <link rel="stylesheet" href="/static/css/calc.css" />
@@ -118,12 +118,12 @@
             function calc_times(control) {
               var km = control.find("input[name='km']").val();
               console.log(control);
-              var distance = control.find("select[id='brevet_dist_km']").val();
+              var distance = control.find("select[name='distance']").val();
               console.log(distance);
-              var datetime = control.find("input[id='begin_date']").val();
+              var begin_date = control.find("input[name='begin_date']").val();
               console.log(datetime);
 
-              $.getJSON(TIME_CALC_URL, {km: km, brev_distance:distance, begin_date:datetime}).done(
+              $.getJSON(TIME_CALC_URL, {km: km, brev_distance:distance, begin_date:begin_date}).done(
                 function(data) {
                    var times = data.result;
                    console.log("Got a response: ");
