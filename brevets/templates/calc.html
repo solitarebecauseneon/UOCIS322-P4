@@ -124,7 +124,7 @@
               var distance = control.find("select[id='brevet_dist_km']").val();
               var datetime = control.find("input[id='begin_date']").val();
 
-              $.getJSON(TIME_CALC_URL, {km: km}).done(
+              $.getJSON(TIME_CALC_URL, {km: km, brev_distance:distance, begin_date:datetime}).done(
                 function(data) {
                    var times = data.result;
                    console.log("Got a response: ");
