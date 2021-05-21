@@ -117,10 +117,9 @@
 
             function calc_times(control) {
               var km = control.find("input[name='km']").val();
-              console.log(control);
-              var distance = control.find("select[name='distance']");
+              var distance = document.getElementById('brevet_dist_km').value;
               console.log(distance);
-              var begin_date = control.find("input[name='begin_date']");
+              var begin_date = document.getElementById('begin_date');
               console.log(begin_date);
 
               $.getJSON(TIME_CALC_URL, {km: km, brev_distance:distance, begin_date:begin_date}).done(
