@@ -66,6 +66,17 @@ def test_high_2():
     assert a_same(close_time(720, 600, d_arrow), arrow.get('2000-01-02 16:00:00', 'YYYY-MM-DD HH:mm:ss'))
 
 
+def test_high_3():
+    """
+    Tests overkill values that exceed brevet distance by only one
+    """
+    # Both should be identical to high_1 results
+    assert a_same(open_time(201, 200, d_arrow), arrow.get('2000-01-01 05:53:00', 'YYYY-MM-DD HH:mm:ss'))
+    assert a_same(open_time(401, 400, d_arrow), arrow.get('2000-01-01 12:08:00', 'YYYY-MM-DD HH:mm:ss'))
+    assert a_same(close_time(1001, 1000, d_arrow), arrow.get('2000-01-04 03:00:00', 'YYYY-MM-DD HH:mm:ss'))
+    assert a_same(close_time(601, 600, d_arrow), arrow.get('2000-01-02 16:00:00', 'YYYY-MM-DD HH:mm:ss'))
+
+
 def test_random():
     """
     Tests a small variety of non-special values

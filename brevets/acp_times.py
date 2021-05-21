@@ -28,8 +28,8 @@ def _minute_calc(dist, speed):
         distance will be traveled in at the given speed, calculated
         according to official ACP brevet calculation methods
     """
-    hr = floor((dist / speed))
-    mns = floor(((dist / speed) - hr) * 60)
+    hr = round((dist / speed))
+    mns = round(((dist / speed) - hr) * 60)
     return (hr * 60) + mns
 
 
@@ -49,11 +49,11 @@ def open_time(control_dist_km, brevet_dist_km, brevet_start_time):
     cd = control_dist_km
     m_shift = 0  # The shift of time in minutes
     count = 0  # Count number of iterations
+    if control_dist_km > brevet_dist_km:  # cuts off any overflow value
+        cd -= control_dist_km - brevet_dist_km
     while cd >= 200 and count < 3:  # counts number of times 200 occurs, up to 3 times (200, 400, 600, or 1000)
         cd -= 200
         count += 1
-    if control_dist_km > brevet_dist_km:  # If this is not true, that means arg1 > arg2, so remainder is not used
-        cd = 0
     m_shift += _minute_calc(cd, MAX_SPEEDS[count])  # Will be 0 if cd does not matter, < 200 otherwise
     for i in range(count):  # Calculates 'maxed' control distances
         m_shift += _minute_calc(200, MAX_SPEEDS[count])
@@ -80,13 +80,14 @@ def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
     cd = control_dist_km
     m_shift = 0  # The shift of time in minutes
     count = 0  # Count number of iterations
+    if control_dist_km > brevet_dist_km:  # cuts off any overflow value
+        cd -= control_dist_km - brevet_dist_km
     while cd >= 200 and count < 3:  # counts number of times 200 occurs, up to 3 times (200, 400, 600, or 1000)
         cd -= 200
         count += 1
     if control_dist_km <= 60:  # divide by 20, add one hour; count should be 0
         m_shift += 60
-        m_shift += cd / 20
-    if control_dist_km > brevet_dist_km:  # If this is not true, that means arg1 > arg2, so remainder is not used
+        m_shift += (cd / 20) * 60
         cd = 0
     m_shift += _minute_calc(cd, MIN_SPEEDS[count])  # Will be 0 if cd does not matter, < 200 otherwise
     for i in range(count):  # Calculates all distance in a given range of speed
