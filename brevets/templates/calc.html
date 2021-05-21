@@ -23,7 +23,7 @@
          integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
          crossorigin="anonymous"></script>
       <!-- moment.js is the JavaScript equivalent of arrow.py -->
-      <script
+      <script>
       src="{{ url_for('static', filename="js/moment.min.js") }}"></script>
    </head>
    <!-- Our own stylesheet -->
@@ -121,10 +121,8 @@
             // View flask_brevets.py for details.
             function calc_times(control) {
               var km = control.find("input[name='km']").val();
-              var distance = control.find("select[name='distance']").val();
-              var datetime = control.find("input[name='begin_date']").val();
-              var open_time_field = control.find("input[name='open']");
-              var close_time_field = control.find("input[name='close']");
+              var distance = control.find("select[id='brevet_dist_km']").val();
+              var datetime = control.find("input[id='begin_date']").val();
 
               $.getJSON(TIME_CALC_URL, {km: km}).done(
                 function(data) {
