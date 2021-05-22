@@ -4,7 +4,6 @@ for ACP-sanctioned brevets
 following rules described at https://rusa.org/octime_alg.html
 and https://rusa.org/pages/rulesForRiders
 """
-from math import floor
 import arrow
 
 #  You MUST provide the following two functions
@@ -81,7 +80,7 @@ def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
     m_shift = 0  # The shift of time in minutes
     count = 0  # Count number of iterations
     if control_dist_km > brevet_dist_km:  # cuts off any overflow value
-        cd -= control_dist_km - brevet_dist_km
+        cd = brevet_dist_km
     while cd >= 200 and count < 3:  # counts number of times 200 occurs, up to 3 times (200, 400, 600, or 1000)
         cd -= 200
         count += 1
