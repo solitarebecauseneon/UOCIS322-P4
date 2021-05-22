@@ -14,6 +14,8 @@ import arrow
 MAX_SPEEDS = [34, 32, 30, 28]
 MIN_SPEEDS = [15, 15, 15, 11.428]
 
+final_close = {200: 13.5, 300: 20, 400: 27, 600: 40, 1000: 75}
+
 
 def _minute_calc(dist, speed):
     """
@@ -76,11 +78,13 @@ def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
        A date object indicating the control close time.
        This will be in the same time zone as the brevet start time.
     """
+    if control_dist_km > brevet_dist_km:  # cuts off any overflow value
+        duration = final_close[brevet_dist_km]
+        closetime = brevet_start_time.shift(hours=duration)
+        return closetime
     cd = control_dist_km
     m_shift = 0  # The shift of time in minutes
     count = 0  # Count number of iterations
-    if control_dist_km > brevet_dist_km:  # cuts off any overflow value
-        cd = brevet_dist_km
     while cd >= 200 and count < 3:  # counts number of times 200 occurs, up to 3 times (200, 400, 600, or 1000)
         cd -= 200
         count += 1
